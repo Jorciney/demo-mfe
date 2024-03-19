@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import { TitleComponent } from '@libs';
 
 @Component({
   standalone: true,
-  imports: [NxWelcomeComponent, RouterModule],
+  imports: [RouterModule, TitleComponent],
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  template: `Test fom MFE <app-title></app-title>`,
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'demo-mfe';
 }
