@@ -1,35 +1,26 @@
 {
-  "name": "demo-mfe",
+  "name": "dummy-mfe",
   "$schema": "node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "prefix": "app",
-  "sourceRoot": "./src",
+  "sourceRoot": "apps/second/src",
   "tags": [],
   "targets": {
     "build": {
       "executor": "@nx/angular:webpack-browser",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/demo-mfe",
-        "index": "./src/index.html",
-        "main": "./src/main.ts",
-        "polyfills": [
-          "zone.js"
-        ],
-        "tsConfig": "./tsconfig.app.json",
+        "outputPath": "dist/apps/dummy-mfe",
+        "index": "apps/second/src/index.html",
+        "main": "apps/second/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/second/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": [
-          "./src/favicon.ico",
-          "./src/assets"
-        ],
-        "styles": [
-          "./src/styles.scss"
-        ],
+        "assets": ["apps/second/src/favicon.ico", "apps/second/src/assets"],
+        "styles": ["apps/second/src/styles.scss"],
         "scripts": [],
         "customWebpackConfig": {
-          "path": "webpack.config.js"
+          "path": "apps/second/webpack.config.js"
         },
         "commonChunk": false
       },
@@ -49,7 +40,7 @@
           ],
           "outputHashing": "all",
           "customWebpackConfig": {
-            "path": "webpack.prod.config.js"
+            "path": "apps/second/webpack.prod.config.js"
           }
         },
         "development": {
@@ -67,10 +58,10 @@
       "executor": "@nx/angular:dev-server",
       "configurations": {
         "production": {
-          "buildTarget": "demo-mfe:build:production"
+          "buildTarget": "dummy-mfe:build:production"
         },
         "development": {
-          "buildTarget": "demo-mfe:build:development"
+          "buildTarget": "dummy-mfe:build:development"
         }
       },
       "defaultConfiguration": "development",
@@ -82,31 +73,27 @@
     "extract-i18n": {
       "executor": "ngx-build-plus:extract-i18n",
       "options": {
-        "buildTarget": "demo-mfe:build",
-        "extraWebpackConfig": "webpack.config.js"
+        "buildTarget": "dummy-mfe:build",
+        "extraWebpackConfig": "apps/second/webpack.config.js"
       }
     },
     "lint": {
       "executor": "@nx/eslint:lint",
       "options": {
-        "lintFilePatterns": [
-          "./src"
-        ]
+        "lintFilePatterns": ["./src"]
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/{projectName}"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/{projectName}"],
       "options": {
-        "jestConfig": "jest.config.ts"
+        "jestConfig": "apps/second/jest.config.app.ts"
       }
     },
     "serve-static": {
       "executor": "@nx/web:file-server",
       "options": {
-        "buildTarget": "demo-mfe:build"
+        "buildTarget": "dummy-mfe:build"
       }
     }
   }

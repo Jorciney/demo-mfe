@@ -2,10 +2,10 @@ const { withModuleFederationPlugin, share } = require('@angular-architects/modul
 
 module.exports = withModuleFederationPlugin({
 
-  name: 'demo-mfe',
+  name: 'dummy-mfe',
 
   exposes: {
-    './Component': '././src/app/app.component.ts',
+    './Component': './apps/second/src/dummy/dummy.component.ts',
   },
   shared: share({
     '@angular/core': { singleton: true, strictVersion: true, requiredVersion: 'auto' },
